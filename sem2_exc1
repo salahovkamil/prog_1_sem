@@ -1,7 +1,6 @@
 a = list(map(int, input().split()))
-spisok = []
-counter = 1
+counter = 0
 for i in range(a[0]):
-	spisok.append(counter)
-	counter += 1
-print(*(set(a[1:])^set(spisok)))
+	counter = a[1:].count(a[i])
+	if counter == 0:
+		print(a[i])
