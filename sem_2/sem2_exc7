@@ -1,0 +1,8 @@
+a = list(map(int, input().split()))
+cnt = -1
+ans = 0
+for i in range(len(a)):
+    if a.count(a[i]) >= cnt:
+        ans = a[i]
+        cnt = a.count(a[i])
+print(ans)
