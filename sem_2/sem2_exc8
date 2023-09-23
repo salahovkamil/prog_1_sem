@@ -1,0 +1,3 @@
+import statistics
+N = int(input())
+print(statistics.median(map(int, input().split())))
