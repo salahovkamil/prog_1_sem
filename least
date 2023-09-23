@@ -1,0 +1,48 @@
+from scipy.optimize import curve_fit
+import numpy as np
+import matplotlib.pyplot as plt
+from statistics import mean
+with open("exp.txt","r") as fin:
+	data = fin.readlines()
+for i in range(len(data)):
+	data[i] = list(map(float, data[i].split()))
+
+current = [float(line.split()[0]) for line in data[1:]]
+voltage = [float(line.split()[0]) for line in data[1:]]
+print(current, voltage)
+
+
+def least_squares(xdata, ydata):  
+	a = (sum([x * y for x, y in zip(xdata, ydata)]) - mean(ydata)*sum(xdata)) / (sum([x**2 for x in xdata]) - mean(xdata) + sum(xdata))
+	b = mean(ydata) - a * mean(xdata) 
+	return a, b
+print(least_squares(current, voltage))
+
+#import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+ax.plot(current, voltage, "o", label="Эксп.данные")
+
+xdata = list(range(0,21))
+ax.plot(xdata, [a * x + b for x in xdata], label="Аппроксимация" )
+ex.set_xlabel("Ток, А")
+ax.set_ylabel("Напряжение, В")
+ax.legend()
+#plt.savefig("figl.png")
+#plt.show()
+
+data = np.loadtxt("exp.txt", skiprows=1)
+
+def lin_approx(x, a, b):
+	return a * x + b
+
+popt,pcov = curve_fit(lin_approx, data[:, 0], data[:, 1])
+print(popt)
+print(*popt)
+
+fig,ax = plt.subplots()
+ax.plot(data[:,0], data[:,1])
+
+xdata = np.linspace(0.0, 20.0, 100)
+ax.plot(xdata, lin_approx(xdata, *popt))
+
+plt.savefig("fig.png")
