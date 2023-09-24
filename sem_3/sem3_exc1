@@ -1,0 +1,16 @@
+def fibonachi(n):
+    ans = 0
+    sp = []
+    if n == 1:
+        return 1
+    if n == 2:
+        return 1
+    elif n > 1:
+        sp.append(1)
+        sp.append(1)
+        for i in range(n - 2):
+            ans += sp[-1] + sp[-2]
+            sp.append(ans)
+            ans = 0
+        return sp[-1]
+print(fibonachi(int(input())))
