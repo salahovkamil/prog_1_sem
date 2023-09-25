@@ -1,0 +1,12 @@
+s = list(map(str, input().split()))
+G = int(s[0])
+stroka = s[1]
+N = len(stroka) // G
+A = []
+for i in range(N):
+    A.append(stroka[i * G: (i + 1) * G])
+B = []
+for i in range(len(A)):
+    B.append(A[i][::-1])
+ans = ''.join(B)
+print(ans)
