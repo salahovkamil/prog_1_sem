@@ -1,0 +1,15 @@
+with open('input.txt', encoding = 'utf-8', mode = 'r') as f:
+    L = f.readlines()
+A = (' '.join(L)).split()
+B = ['а', 'о', 'у', 'ы', 'и', 'э', 'я', 'ю', 'ё', 'е']
+for i in range(len(A)):
+    elem = A[i]
+    C = []
+    for g in range(len(elem)):
+        C.append(elem[g])
+    j = 1
+    for j in range(len(elem)):
+        if ((elem[j] in B) == True) and ((elem[j-1] in B) == False):
+            a = 'c' + elem[j]
+            C[j] = C[j] + a
+    print(''.join(C), end = ' ')
