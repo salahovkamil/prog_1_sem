@@ -1,0 +1,9 @@
+syze = int(input())
+symbol = input()
+def triangle(syze, symbol):
+    for i in range(1,syze // 2 + 2):
+        print(symbol * i)
+    for j in range(syze // 2 , 0, -1):
+        if j >=1:
+            print(symbol * j)
+print(triangle(syze, symbol))
