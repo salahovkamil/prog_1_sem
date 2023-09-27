@@ -6,4 +6,5 @@ def triangle(syze, symbol):
     for j in range(syze // 2 , 0, -1):
         if j >=1:
             print(symbol * j)
-print(triangle(syze, symbol))
+    return
+triangle(syze, symbol)
