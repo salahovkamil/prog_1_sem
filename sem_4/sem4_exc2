@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+import numpy as np
+fig = plt.figure(figsize=(16, 9))
+ax1 = fig.add_subplot(211)
+ax2 = fig.add_subplot(212)
+values = np.random.normal(0, 10, 500)
+
+ax1.hist(values, 50)
+ax1.grid()
+
+
+values2 = np.random.normal(0, 10, 5000)
+
+ax2.hist(values2, 50)
+ax2.grid()
+
+ax2.set_title('second graph')
+ax2.grid()
+ax2.legend()
+
+plt.show()
