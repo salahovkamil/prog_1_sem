@@ -1,0 +1,25 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+file = pd.read_csv('iris_data (2).csv')
+A = list(file['Species'])
+x = A.count('Iris-setosa')
+y = A.count('Iris-versicolor')
+z = len(A) - x - y
+fig = plt.figure(figsize = (16,9))
+ax1 = fig.add_subplot(211)
+ax2 = fig.add_subplot(212)
+ax1.set_title('The share of iris species in the dataset')
+ax1.pie([x / len(A), y / len(A), z / len(A)], labels = ['Iris-setosa','Iris-versicolor','Iris-virginica'])
+B = list(file['PetalLengthCm'])
+a = 0
+b = 0
+c = 0
+for i in range(len(A)):
+    if B[i] < 1.2:
+        a += 1
+    elif B[i] > 1.5:
+        c += 1
+b=len(A) - a - c
+ax2.set_title('The proportion of irises along the length of the petal')
+ax2.pie([a / len(A), b / len(A), c / len(A)], labels = ['<1.2','1,2<= <=1.5','>1.5'])
+plt.show()
