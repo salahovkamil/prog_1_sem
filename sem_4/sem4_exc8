@@ -1,0 +1,10 @@
+a = [1,4,6,9,5,389]
+b = [3,3,8,2,4,6]
+unification = set(a).union(set(b))
+unicum_of_a = set(a)
+unicum_of_b = set(b)
+intersection = set(a).intersection(set(b))
+print(unicum_of_a)
+print(unicum_of_b)
+print(unification)
+print(intersection)
