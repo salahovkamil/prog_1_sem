@@ -3,7 +3,7 @@ class Vector():
         self.x = x
         self.y = y
         self.z = z
-        assert str(x).isdigit()==True
+        assert str(x).isdigit() == True
         assert str(y).isdigit() == True
         assert str(z).isdigit() == True
 
