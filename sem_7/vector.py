@@ -3,9 +3,9 @@ class Vector():
         self.x = x
         self.y = y
         self.z = z
-        assert str(x).isdigit() == True
-        assert str(y).isdigit() == True
-        assert str(z).isdigit() == True
+        #assert str(x).isdigit() == True
+        #assert str(y).isdigit() == True
+        #assert str(z).isdigit() == True
 
     def __abs__(self):
         return (self.x ** 2 + self.y ** 2 + self.z ** 2) ** 0.5

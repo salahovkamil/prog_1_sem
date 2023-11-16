@@ -1,0 +1,33 @@
+import vector
+
+print('Упражнение 1.1 и 1.2')
+print('Введите количество точек для рассчёта центра масс и площади')
+n=int(input())
+print('Вводите координаты точек и массы этих точек через Enter по образцу: x y z m')
+M=0
+V=[]
+c=vector.Vector(0,0,0)
+for i in range(n):
+    A=list(map(float,input().split()))
+    v=vector.Vector(int(A[0]),int(A[1]),int(A[2]))
+    m=int(A[3])
+    V.append(v)
+    vec_add = vector.Vector((m*v)[0],(m*v)[1],(m*v)[2])
+    c = vector.Vector((c +vec_add)[0],(c +vec_add)[1], (c +vec_add)[2])
+    M+=m
+M0=1/M
+C=M0 * c
+s=0
+S=0
+if n>2:
+    for i in range(n):
+        for j in range(n):
+            for k in range(j+1,n):
+                v1 = vector.Vector(int((V[j]-V[i])[0]),int((V[j]-V[i])[1]),int((V[j]-V[i])[2]))
+                v2 = vector.Vector(int((V[k]-V[i])[0]),int((V[k]-V[i])[1]),int((V[k]-V[i])[2]))
+                S = abs(vector.Vector(int((v1*v2)[0]), int((v1*v2)[1]), int((v1*v2)[2]) ))
+                if S>s:
+                    s=S
+                S=0
+print(f'1.1 Центр масс: {C}')
+print(f'1.2 Треугольник с максимальной площадью: {s}')
