@@ -1,0 +1,70 @@
+from tkinter import *
+from tkinter import ttk
+
+def calculate(*args):
+    try:
+        value1 = float(feet.get())
+        value2 = float(fee.get())
+        meters.set(round(value1/(value2**2),2))
+        BMI=round(value1/(value2**2),2)
+        if BMI <= 16:
+            diagnosis.set('Выраженный дефицит массы тела')
+        elif BMI > 16 and BMI<18.5:
+            diagnosis.set( 'Дефицит масса тела')
+        elif BMI >= 18.5 and BMI <= 25:
+            diagnosis.set( 'Норма')
+        elif BMI > 25 and BMI < 30:
+            diagnosis.set('Избыточная масса тела (предожирение)')
+        elif BMI >= 30 and BMI < 35:
+            diagnosis.set('Ожирение 1 степени')
+        elif BMI >= 35 and BMI < 40:
+            diagnosis.set( 'Ожирение 2 степени')
+        else:
+            diagnosis.set( 'Ожирение 3 степени')
+    except ValueError:
+        pass
+
+
+root = Tk()
+root.title("Body mass index")
+
+
+mainframe = ttk.Frame(root, padding="3 3 12 12")
+mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+root.columnconfigure(0, weight=1)
+root.rowconfigure(0, weight=1)
+
+
+feet = StringVar()
+feet_entry = ttk.Entry(mainframe, width=7, textvariable=feet)
+feet_entry.grid(column=2, row=1, sticky=(W, E))
+
+fee = StringVar()
+fee_entry = ttk.Entry(mainframe, width=7, textvariable=fee)
+fee_entry.grid(column=1, row=1, sticky=(W, E))
+
+
+meters = StringVar()
+ttk.Label(mainframe, textvariable=meters).grid(column=2, row=2, sticky=(W, E))
+
+diagnosis = StringVar()
+ttk.Label(mainframe, textvariable=diagnosis).grid(column=1, row=2, sticky=(W, E))
+
+
+ttk.Button(mainframe, text="Calculate", command=calculate).grid(column=3, row=3, sticky=W)
+
+
+ttk.Label(mainframe, text="height in m and body weight in kg").grid(column=3, row=1, sticky=W)
+ttk.Label(mainframe, text="BMI").grid(column=3, row=2, sticky=W)
+
+
+for child in mainframe.winfo_children():
+    child.grid_configure(padx=5, pady=5)
+
+
+feet_entry.focus()
+
+root.bind("<Return>", calculate)
+
+
+root.mainloop()
