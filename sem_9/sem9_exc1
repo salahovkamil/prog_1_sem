@@ -1,0 +1,60 @@
+def translate(f):
+    answer=eval(f)
+    value=f.split()
+    pol_=[]
+    stack=[]
+    flag=False
+    i=-1
+    for token in f:
+        if token.isdigit():
+            if flag:
+                pol_[i]=pol_[i]+token
+            else:
+                pol_.append(token)
+                i += 1
+            flag=True
+        elif token in ["+", "-", "*", "/"]:
+            while stack and stack[-1] in ["*", "/"]:
+                pol_.append(stack.pop())
+                i+=1
+            flag = False
+            stack.append(token)
+        elif token == "(":
+            stack.append(token)
+        elif token == ")":
+            while stack and stack[-1] != "(":
+                pol_.append(stack.pop())
+                flag=False
+                i+=1
+            stack.pop()
+
+    while stack:
+        pol_.append(stack.pop())
+    print('Обратная польская нотация:')
+    print(' '.join(pol_))
+    pol_=[]
+    pryampol=[]
+    stack1=[]
+    stack=[]
+    flag=False
+    i=-1
+
+    for token in f[::-1]:
+        if token.isdigit():
+            pol_.append(token)
+        elif token in ["+", "-", "*", "/"]:
+            while stack and stack[-1] in ["*", "/"]:
+                pol_.append(stack.pop())
+            stack.append(token)
+        elif token == ")":
+            stack.append(token)
+        elif token == "(":
+            while stack and stack[-1] != ")":
+                pol_.append(stack.pop())
+            stack.pop()
+
+    while stack:
+        pol_.append(stack.pop())
+    print('Прямая польская нотация:')
+    print(' '.join(pol_[::-1]))
+print(translate(input()))
