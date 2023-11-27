@@ -55,6 +55,6 @@ def translate(f):
 
     while stack:
         pol_.append(stack.pop())
-    print('Прямая польская нотация:')
-    print(' '.join(pol_[::-1]))
+    return 'Прямая польская нотация:'
+    return ' '.join(pol_[::-1])
 print(translate(input()))
