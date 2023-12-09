@@ -1,3 +1,4 @@
+import unittest
 class PrimeFactorsTest(unittest.TestCase):
     def test_prime_factors(self):
         self.assertEqual(prost_mnozch(2), [2])
