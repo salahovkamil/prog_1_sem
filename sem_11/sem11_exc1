@@ -1,0 +1,15 @@
+class PrimeFactorsTest(unittest.TestCase):
+    def test_prime_factors(self):
+        self.assertEqual(prost_mnozch(2), [2])
+        self.assertEqual(prost_mnozch(3), [3])
+        self.assertEqual(prost_mnozch(4), [2, 2])
+        self.assertEqual(prost_mnozch(5), [5])
+        self.assertEqual(prost_mnozch(6), [2, 3])
+        self.assertEqual(prost_mnozch(7), [7])
+        self.assertEqual(prost_mnozch(8), [2, 2, 2])
+        self.assertEqual(prost_mnozch(9), [3, 3])
+        self.assertEqual(prost_mnozch(10), [2, 5])
+        self.assertEqual(prost_mnozch(12), [2, 2, 3])
+
+if __name__ == '__main__':
+    unittest.main()
