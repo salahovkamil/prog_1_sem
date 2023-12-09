@@ -1,0 +1,17 @@
+import unittest
+
+
+class CaesarTest(unittest.TestCase):
+    def test_encode(self):
+        cipher = Caesar(19)
+        self.assertEqual(cipher.encode("абвгд"), "нопрс")
+        self.assertEqual(cipher.encode("привет"), "эюцпта")
+
+    def test_decode(self):
+        cipher = Caesar(3)
+        self.assertEqual(cipher.decode("нопрс"), "абвгд")
+        self.assertEqual(cipher.decode("эюцпта"), "привет")
+
+
+if __name__ == '__main__':
+    unittest.main()
