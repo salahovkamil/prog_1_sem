@@ -1,3 +1,4 @@
+import unittest
 class TestMNKCalculation(unittest.TestCase):
 
     def test_mnk_coefficients(self):
