@@ -1,0 +1,17 @@
+class TestMNKCalculation(unittest.TestCase):
+
+    def test_mnk_coefficients(self):
+        x = [1, 2, 3, 4, 5]
+        y = [2, 4, 6, 8, 10]
+        a, b = calculate_mnk_coefficients(x, y)
+        self.assertAlmostEqual(a, 2.0) 
+        self.assertAlmostEqual(b, 0.0)  
+
+    def test_mnk_coefficients_empty_data(self):
+        x = []
+        y = []
+        a, b = calculate_mnk_coefficients(x, y)
+        self.assertIsNone(a) 
+        self.assertIsNone(b)  
+if __name__ == '__main__':
+    unittest.main()
